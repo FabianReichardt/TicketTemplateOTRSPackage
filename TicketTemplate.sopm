@@ -33,10 +33,12 @@
             <Column Name="ticket_type" Required="true" Size="250" Type="VARCHAR"/>
             <Column Name="create_by" Required="true" Type="INTEGER"/>
             <Column Name="create_time" Required="true" Type="DATETIME"/>
-			<Unique Name="ps_tickettemplate_name" />
-			<UniqueColumn Name="name" />
-			<ForeignKey />
-			<Reference />
+			<Unique Name="ps_tickettemplate_name">
+				<UniqueColumn Name="name"/>
+			</Unique>
+			<ForeignKey>
+				<Reference />
+			</ForeignKey>
         </TableCreate>
     </DatabaseInstall>
     <DatabaseUpgrade>
