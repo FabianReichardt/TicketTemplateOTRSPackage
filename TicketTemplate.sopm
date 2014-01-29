@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <Name>TicketTemplate</Name>
+    <Version>0.1.97</Version>
+    <Framework>3.x.x</Framework>
+    <Vendor>Renee Baecker, Perl-Services.de</Vendor>
+    <URL>http://perl-services.de/</URL>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <ChangeLog Version="0.1.97" Date="2014-01-29 11:38:06">Modified version by Fabian Reichardt (cbs Consulting)</ChangeLog>
+    <ChangeLog Version="0.1.96" Date="2011-03-21 02:49:17">Original version by Renee Baecker</ChangeLog>
+    <Description Lang="en">A module to create ticket templates and tickets based on the templates.</Description>
+    <Description Lang="de">Ein Modul, um Ticket Templates und darauf basierende Tickets zu erstellen.</Description>
+    <BuildDate>2011-03-21 02:49:17</BuildDate>
+    <BuildHost>support.cbs-consulting.de</BuildHost>
+    <Filelist>
+        <File Permission="644" Location="Kernel/Config/Files/TicketTemplate.xml"></File>
+        <File Permission="644" Location="Kernel/Language/de_TicketTemplate.pm"></File>
+        <File Permission="644" Location="Kernel/Modules/AgentTicketTemplate.pm"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/OutputFilterTicketTemplate.pm"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentTicketTemplateForm.dtl"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentTicketTemplateList.dtl"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/TicketFromTemplate.dtl"></File>
+        <File Permission="644" Location="Kernel/System/TicketTemplate.pm"></File>
+        <File Permission="644" Location="Kernel/System/TicketTemplate/Article.pm"></File>
+        <File Permission="644" Location="var/httpd/htdocs/js/TicketTemplate.Form.js"></File>
+		</Filelist>
+    <DatabaseInstall>
+        <TableCreate Name="ps_tickettemplate">
+            <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
+            <Column Name="name" Required="true" Size="250" Type="VARCHAR"/>
+            <Column Name="comments" Required="false" Type="TEXT"/>
+            <Column Name="template_json" Required="true" Type="MEDIUMTEXT"/>
+            <Column Name="ticket_type" Required="true" Size="250" Type="VARCHAR"/>
+            <Column Name="create_by" Required="true" Type="INTEGER"/>
+            <Column Name="create_time" Required="true" Type="DATETIME"/>
+        </TableCreate>
+    </DatabaseInstall>
+    <DatabaseUninstall>
+        <TableDrop Name="ps_tickettemplate"/>
+    </DatabaseUninstall>
+</otrs_package>
