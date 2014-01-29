@@ -33,8 +33,17 @@
             <Column Name="ticket_type" Required="true" Size="250" Type="VARCHAR"/>
             <Column Name="create_by" Required="true" Type="INTEGER"/>
             <Column Name="create_time" Required="true" Type="DATETIME"/>
+			<Unique Name="ps_tickettemplate_name" />
+			<UniqueColumn Name="name" />
+			<ForeignKey />
+			<Reference />
         </TableCreate>
     </DatabaseInstall>
+    <DatabaseUpgrade>
+        <TableAlter Name="ps_tickettemplate">
+			<ColumnChange Name="template_json" Required="true" Type="MEDIUMTEXT"/>
+		</TableAlter>
+    </DatabaseUpgrade>
     <DatabaseUninstall>
         <TableDrop Name="ps_tickettemplate"/>
     </DatabaseUninstall>
